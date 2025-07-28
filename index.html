@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Shoperline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff8e1;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 10px #ddd;
+        }
+        h1 {
+            color: #f1a500;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        button {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1ebd5c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shoperline Order</h1>
+        <form id="orderForm">
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" placeholder="Nama lengkap">
+
+            <label for="alamat">Alamat</label>
+            <textarea id="alamat" placeholder="Alamat lengkap"></textarea>
+
+            <label for="produk">Pilih Produk</label>
+            <select id="produk">
+                <option value="Tshirt">Tshirt</option>
+                <option value="Dress">Dress</option>
+                <option value="Tank Top">Tank Top</option>
+                <option value="Blouse">Blouse</option>
+                <option value="Jeans">Jeans</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+
+            <label for="wa">Nomor WhatsApp</label>
+            <input type="text" id="wa" placeholder="08xxxxxxx">
+
+            <button type="button" onclick="kirimWA()">Order via WhatsApp</button>
+        </form>
+    </div>
+
+    <script>
+        function kirimWA() {
+            const nama = document.getElementById('nama').value;
+            const alamat = document.getElementById('alamat').value;
+            const produk = document.getElementById('produk').value;
+            const wa = document.getElementById('wa').value;
+            const noTujuan = "62895393988880";
+
+            const pesan = `Halo kak, saya mau order:%0ANama: ${nama}%0AAlamat: ${alamat}%0AWA: ${wa}%0AProduk: ${produk}`;
+            const url = `https://wa.me/${noTujuan}?text=${pesan}`;
+            window.open(url, "_blank");
+        }
+    </script>
+</body>
+</html>
